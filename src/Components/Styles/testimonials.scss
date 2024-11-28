@@ -1,0 +1,94 @@
+.testimonials {
+    text-align: center;
+    min-height: 100svh;
+    display: grid;
+    place-content: center;
+    margin-bottom: 3rem;
+
+    .container {
+        padding: 1rem;
+        h1 {
+            font-size: 2.4rem;
+        }
+
+        p {
+            margin: 0 auto;
+            margin-top: 1rem;
+            max-width: 37rem;
+        }
+
+        .cards {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.3rem;
+            margin-top: 3.5rem;
+            max-width: 63rem;
+
+            .card {
+                background: var(--dark-bg-color);
+                padding: 1rem;
+                border-radius: 0 0.8rem;
+                transition: 0.5s;
+                user-select: none;
+                max-width: 26rem;
+                min-height: 20rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    box-shadow: 1px 1px 12px var(--primary-color);
+                    transform: translateY(-0.8rem);
+                }
+
+                svg {
+                    font-size: 2.3rem;
+                    color: var(--primary-color);
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    margin: 0.7rem 0;
+                    font-weight: 500;
+                }
+
+                .person {
+                    width: 5rem;
+                    aspect-ratio: 1/1;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    margin: 0 auto;
+                    border: 2px solid var(--primary-color);
+
+                    img {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                small {
+                    display: block;
+                    font-size: 0.88rem;
+                    font-weight: 600;
+                    margin: 0.5rem 0;
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+}
+
+// MEDIAS
+
+@media screen and (max-width: 860px) {
+    .testimonials {
+        .container {
+            .cards {
+                flex-direction: column !important;
+            }
+        }
+    }
+}

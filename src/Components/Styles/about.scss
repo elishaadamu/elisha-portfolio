@@ -1,0 +1,76 @@
+.about {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 3rem 0;
+    padding: 0 1rem;
+
+    .container {
+        h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            margin: 2rem 0;
+            position: sticky;
+            top: 4.5rem;
+            z-index: -2;
+        }
+
+        .my-info {
+            .my-img {
+                overflow: hidden;
+                height: 18rem;
+                border-radius: 1.3rem;
+                margin-bottom: 2rem;
+                position: sticky;
+                top: 5rem;
+                width: 100%;
+                z-index: -2;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .details {
+                background: var(--bg-color);
+                padding: 0.5rem 0;
+
+                .detail {
+                    margin-bottom: 0.8rem;
+                    h3 {
+                        color: var(--primary-color);
+                        font-size: 1.37rem;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MEDIAS
+@media screen and (min-width: 850px) {
+    .about {
+        .container {
+            h2 {
+                position: static;
+            }
+
+            .my-info {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .my-img {
+                width: 40% !important;
+            }
+
+            .details {
+                width: 60% !important;
+            }
+        }
+    }
+}

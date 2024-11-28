@@ -1,0 +1,173 @@
+.portfolio {
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 3rem 0;
+
+    .container {
+        h2 {
+            text-align: center;
+            z-index: -1;
+            font-size: 2.4rem;
+            position: sticky;
+            top: 4rem;
+            text-transform: capitalize;
+        }
+
+        .works {
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg-color);
+            gap: 4rem;
+
+            .work {
+                width: fit-content;
+                max-height: 100%;
+                height: 70%;
+                padding: 0.8rem;
+                background: var(--dark-bg-color);
+                border-radius: 1rem;
+
+                &:first-child {
+                    margin-left: 40%;
+                }
+
+                h3 {
+                    display: none;
+                }
+
+                .work-img {
+                    display: flex;
+                    gap: 0.5rem;
+                    width: 100%;
+                    height: 48%;
+                    margin: 0 0 1rem 0;
+
+                    a {
+                        width: 30rem;
+                        aspect-ratio: 1.8/1;
+                        border-radius: 0.7rem;
+                        overflow: hidden;
+
+                        img {
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+
+                .work-num {
+                    width: 15rem;
+                    display: grid;
+                    place-content: center;
+
+                    span {
+                        border-top: 2px solid var(--primary-color);
+                        border-bottom: 2px solid var(--primary-color);
+                        aspect-ratio: 1/1.5;
+                        width: 2rem;
+                        border-radius: 50%;
+                        font-size: 2rem;
+                        padding: 0.5rem;
+                        box-sizing: content-box;
+                        display: grid;
+                        place-content: center;
+                        color: var(--primary-color);
+                        font-family: cursive;
+                    }
+                }
+
+                .work-details {
+                    display: flex;
+                    gap: 0.5rem;
+                    width: 100%;
+                    height: 48%;
+
+                    .desc {
+                        background: var(--bg-color);
+                        padding: 1rem;
+                        border-radius: 1rem;
+                        width: 30rem;
+
+                        p {
+                            white-space: wrap;
+                        }
+
+                        button {
+                            font-size: 1rem;
+                            padding: 0.7rem 1rem;
+                            border-radius: 0.5rem;
+                            cursor: pointer;
+                            color: var(--dark-bg-color);
+                            background: var(--primary-color);
+                            margin-top: 1rem;
+                            font-weight: 600;
+                            transition: 0.5s;
+
+                            &:hover {
+                                scale: 1.1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MEDIAS
+
+@media screen and (max-width: 1800px) {
+    .portfolio {
+        .container {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .works {
+                .work {
+                    width: 24rem;
+                    height: 16rem;
+                    background: none;
+                    position: relative;
+
+                    h3 {
+                        display: block;
+                        text-transform: uppercase;
+                        font-size: 1rem;
+                        font-family: var(--f2);
+                    }
+
+                    .work-img {
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+
+                        a {
+                            width: 100%;
+                        }
+
+                        .work-num {
+                            position: absolute;
+                            top: 1rem;
+                            right: 1rem;
+                            width: fit-content;
+
+                            span {
+                                background: var(--bg-color);
+                                width: 1.7rem;
+                                font-size: 1.3rem;
+                                font-weight: 600;
+                                border: none;
+                            }
+                        }
+                    }
+                    .work-details {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
