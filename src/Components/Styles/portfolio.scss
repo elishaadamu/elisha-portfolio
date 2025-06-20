@@ -1,173 +1,161 @@
 .portfolio {
-    min-height: 100vh;
-    min-height: 100svh;
-    margin: 3rem 0;
+  min-height: 100vh;
+  margin: 3rem 0;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
 
-    .container {
-        h2 {
-            text-align: center;
-            z-index: -1;
-            font-size: 2.4rem;
-            position: sticky;
-            top: 4rem;
-            text-transform: capitalize;
-        }
-
-        .works {
-            align-items: center;
-            width: 100%;
-            height: 100vh;
-            background: var(--bg-color);
-            gap: 4rem;
-
-            .work {
-                width: fit-content;
-                max-height: 100%;
-                height: 70%;
-                padding: 0.8rem;
-                background: var(--dark-bg-color);
-                border-radius: 1rem;
-
-                &:first-child {
-                    margin-left: 40%;
-                }
-
-                h3 {
-                    display: none;
-                }
-
-                .work-img {
-                    display: flex;
-                    gap: 0.5rem;
-                    width: 100%;
-                    height: 48%;
-                    margin: 0 0 1rem 0;
-
-                    a {
-                        width: 30rem;
-                        aspect-ratio: 1.8/1;
-                        border-radius: 0.7rem;
-                        overflow: hidden;
-
-                        img {
-                            height: 100%;
-                            width: 100%;
-                            object-fit: cover;
-                        }
-                    }
-                }
-
-                .work-num {
-                    width: 15rem;
-                    display: grid;
-                    place-content: center;
-
-                    span {
-                        border-top: 2px solid var(--primary-color);
-                        border-bottom: 2px solid var(--primary-color);
-                        aspect-ratio: 1/1.5;
-                        width: 2rem;
-                        border-radius: 50%;
-                        font-size: 2rem;
-                        padding: 0.5rem;
-                        box-sizing: content-box;
-                        display: grid;
-                        place-content: center;
-                        color: var(--primary-color);
-                        font-family: cursive;
-                    }
-                }
-
-                .work-details {
-                    display: flex;
-                    gap: 0.5rem;
-                    width: 100%;
-                    height: 48%;
-
-                    .desc {
-                        background: var(--bg-color);
-                        padding: 1rem;
-                        border-radius: 1rem;
-                        width: 30rem;
-
-                        p {
-                            white-space: wrap;
-                        }
-
-                        button {
-                            font-size: 1rem;
-                            padding: 0.7rem 1rem;
-                            border-radius: 0.5rem;
-                            cursor: pointer;
-                            color: var(--dark-bg-color);
-                            background: var(--primary-color);
-                            margin-top: 1rem;
-                            font-weight: 600;
-                            transition: 0.5s;
-
-                            &:hover {
-                                scale: 1.1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+  .container {
+    h2 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 3rem;
+      text-transform: capitalize;
     }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+
+      .work {
+        background: var(--dark-bg-color);
+        border-radius: 0.7rem;
+        padding: 0rem;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        border: 1px solid var(--primary-color);
+
+        &:hover {
+          box-shadow: 1px 1px 29px rgb(36, 48, 105);
+          transition: box-shadow 0.3s ease;
+        }
+
+        .work-img {
+          position: relative;
+          margin-bottom: 1rem;
+
+          a {
+            display: block;
+            width: 100%;
+
+            overflow: hidden;
+            border-top-left-radius: 0.7rem !important;
+            border-top-right-radius: 0.7rem !important;
+            border-bottom-left-radius: 0rem !important;
+            border-bottom-right-radius: 0rem !important;
+
+            img {
+              width: 100%;
+              height: 250px;
+              object-fit: cover;
+              transition: transform 0.3s ease;
+              border-radius: 0;
+            }
+
+            &:hover img {
+              transform: scale(1.05);
+            }
+          }
+
+          .work-num {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--bg-color);
+            border-radius: 50%;
+            padding: 0.5rem;
+
+            span {
+              color: var(--primary-color);
+              font-size: 1.2rem;
+              font-weight: bold;
+            }
+          }
+        }
+
+        .work-details {
+          .desc {
+            padding: 1rem;
+            border-radius: 0.7rem;
+            display: flex;
+            justify-content: center;
+
+            p {
+              margin-bottom: 1rem;
+              line-height: 1.6;
+            }
+
+            button {
+              background: var(--primary-color);
+              color: var(--dark-bg-color);
+              padding: 0.7rem 1.5rem;
+              border-radius: 0.5rem;
+              font-weight: 600;
+              transition: transform 0.3s ease;
+
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+
+        h3 {
+          margin-top: 1rem;
+          font-size: 1.2rem;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
 }
 
-// MEDIAS
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-@media screen and (max-width: 1800px) {
-    .portfolio {
-        .container {
-            h2 {
-                font-size: 2rem;
-            }
+// Media Queries
+@media screen and (max-width: 968px) {
+  .portfolio .container .works {
+    grid-template-columns: 1fr;
+  }
+}
 
-            .works {
-                .work {
-                    width: 24rem;
-                    height: 16rem;
-                    background: none;
-                    position: relative;
+@media screen and (max-width: 480px) {
+  .portfolio {
+    .container {
+      h2 {
+        font-size: 1.8rem;
+      }
 
-                    h3 {
-                        display: block;
-                        text-transform: uppercase;
-                        font-size: 1rem;
-                        font-family: var(--f2);
-                    }
-
-                    .work-img {
-                        position: relative;
-                        height: 100%;
-                        width: 100%;
-
-                        a {
-                            width: 100%;
-                        }
-
-                        .work-num {
-                            position: absolute;
-                            top: 1rem;
-                            right: 1rem;
-                            width: fit-content;
-
-                            span {
-                                background: var(--bg-color);
-                                width: 1.7rem;
-                                font-size: 1.3rem;
-                                font-weight: 600;
-                                border: none;
-                            }
-                        }
-                    }
-                    .work-details {
-                        display: none;
-                    }
-                }
-            }
+      .works .work {
+        .work-img img {
+          height: 200px;
         }
+
+        .work-details .desc {
+          padding: 0.8rem;
+
+          p {
+            font-size: 0.9rem;
+          }
+
+          button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+          }
+        }
+      }
     }
+  }
 }

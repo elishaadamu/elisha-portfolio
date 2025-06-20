@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import alvocine from "../assets/alvocine.png";
 import lifewithalacrity from "../assets/lifewithalacrity.png";
 import sportstechwest from "../assets/sportstechwest.png";
@@ -6,6 +9,8 @@ import portfolio from "../assets/portfolio.png";
 import AYCreativeTech from "../assets/ay-creatives.png";
 import "./Styles/portfolio.scss";
 import Project from "./Project";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Portfolio() {
   const [clickedWork, setClickedWork] = useState(null);
@@ -69,7 +74,7 @@ function Portfolio() {
     {
       workImg: AYCreativeTech,
       name: "AY Creative Technologies",
-      index: "04",
+      index: "03",
       tags: ["html", "css", "React", "Ant UI", "Tailwindcss", "GitHub"],
       link: "https://ay-creative-tech.netlify.app/",
       github: "https://github.com/elishaadamu/ay-creative-tech",
@@ -80,19 +85,65 @@ function Portfolio() {
       ],
       description: `Trusted platform providing secure verification including Nin,Bvn and documents modification, Our mission is to offer reliable,fast, and accurate verification solutions to help you with your personal and business needs.`,
     },
+
+    {
+      workImg: portfolio,
+      name: "Portfolio",
+      index: "04",
+      tags: [
+        "html",
+        "css",
+        "sass",
+        "Gsap",
+        "yup",
+        "react-hook-form",
+        "javaScript",
+        "and more...",
+      ],
+      link: "#",
+      github: "#",
+      features: [
+        "Visual Design",
+        " Certifications",
+        "Responsive Design",
+        "resume/CV",
+        "Skills",
+        "and more...",
+      ],
+      description: `Personal Portfolio: An interactive portfolio showcasing my skills as a frontend web developer. Built with React and enhanced with GSAP animations, it features projects like AlvoChat and Alvocine, demonstrating my expertise in creating dynamic and responsive web applications.
+
+`,
+    },
   ];
+
+  const scrollContainerRef = useRef(null);
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+
+    // Horizontal scroll for the children
+    gsap.to(scrollContainer.children, {
+      xPercent: -140 * (scrollContainer.children.length - 1), //AJUST TO YA TASTE
+      ease: "none",
+      scrollTrigger: {
+        trigger: scrollContainer,
+        pin: true,
+        scrub: 1,
+        end: () => `+=${scrollContainer.scrollWidth}`,
+        // onEnter: () => (document.body.style.overflowY = "auto"),
+        // onLeave: () => (document.body.style.overflowY = "auto"),
+        // onEnterBack: () => (document.body.style.overflowY = "auto"),
+        // onLeaveBack: () => (document.body.style.overflowY = "auto"),
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   const handleWork = (w) => {
     setClickedWork(w);
     setShowWorkDetails(true);
-  };
-
-  const truncateWords = (text, limit = 20) => {
-    const words = text.split(" ");
-    if (words.length > limit) {
-      return words.slice(0, limit).join(" ") + "...";
-    }
-    return text;
   };
 
   return (
@@ -101,18 +152,21 @@ function Portfolio() {
         <div className="container">
           <h2>Portfolio Showcase</h2>
 
-          <div className="works">
+          <div
+            className="works"
+            ref={scrollContainerRef}
+            style={{
+              marginTop: "0rem",
+              display: "flex",
+              overflowX: "hidden",
+              whiteSpace: "nowrap",
+            }}
+          >
             {works.map((work, i) => (
-              <div
-                className="work"
-                key={i}
-                onClick={() => handleWork(work)}
-                data-aos="fade-up"
-                data-aos-delay={i * 100}
-              >
+              <div className="work" key={i} onClick={() => handleWork(work)}>
                 <div className="work-img">
                   <a>
-                    <img src={work.workImg} alt={work.name} />
+                    <img src={work.workImg} />
                   </a>
 
                   <div className="work-num">
@@ -121,25 +175,29 @@ function Portfolio() {
                 </div>
 
                 <div className="work-details">
-                  <p className="my-10 text-center text-2xl font-bold ">
-                    {work.name}
-                  </p>
+                  <div className="work-num">
+                    <span>{work.index}</span>
+                  </div>
+
                   <div className="desc">
-                    <button>View Project</button>
+                    <p>{work.description}</p>
+
+                    <button>Veiw Project</button>
                   </div>
                 </div>
+                <h3>{work.name}</h3>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {showWorkDetails && (
+      {showWorkDetails ? (
         <Project
           project={clickedWork}
           setShowWorkDetails={setShowWorkDetails}
         />
-      )}
+      ) : null}
     </>
   );
 }
