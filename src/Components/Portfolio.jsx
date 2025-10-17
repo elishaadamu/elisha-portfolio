@@ -6,6 +6,8 @@ import portfolio from "../assets/portfolio.png";
 import AYCreativeTech from "../assets/ay-creatives.png";
 import "./Styles/portfolio.scss";
 import Project from "./Project";
+import CMP from "../assets/CMPPerformanceMeasures.png";
+import TRICITIES from "../assets/tri-cities.png";
 
 function Portfolio() {
   const [clickedWork, setClickedWork] = useState(null);
@@ -79,6 +81,26 @@ function Portfolio() {
         "Software Solutions",
       ],
       description: `Trusted platform providing secure verification including Nin,Bvn and documents modification, Our mission is to offer reliable,fast, and accurate verification solutions to help you with your personal and business needs.`,
+    },
+    {
+      workImg: CMP,
+      name: "CMP Performance Measures",
+      index: "05",
+      tags: ["html", "css", "React", "D3", "Tailwindcss", "GitHub"],
+      link: "https://cmp-dash.netlify.app/",
+      github: "https://github.com/elishaadamu/CMP-Performance-Measures",
+      features: ["Population Chart", "D3 Visualisation", "Software Solutions"],
+      description: `This utilises CSV data to draw charts to represent the data`,
+    },
+    {
+      workImg: TRICITIES,
+      name: "Tri-Cities Area MPO Performance Tracker",
+      index: "06",
+      tags: ["html", "css", "React", "D3", "Tailwindcss", "GitHub"],
+      link: "https://cpdcperftracker.netlify.app/",
+      github: "https://github.com/elishaadamu/cpdc_perf_tracker",
+      features: ["Population Chart", "D3 Visualisation", "Software Solutions"],
+      description: `This utilises CSV data to draw charts to represent the data`,
     },
   ];
 
